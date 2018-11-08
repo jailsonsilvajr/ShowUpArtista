@@ -1,18 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".gui.LoginActivity"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/background_login_activity" />
+
+        <ImageView
+            android:id="@+id/login_imageview_marca"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/marca"/>
+
+        <EditText
+            android:id="@+id/login_edittext_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_imageview_marca"
+            android:hint="@string/email"
+            android:textColorHint="@color/textColorPrimary"
+            android:textColor="@color/textColorPrimary"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginRight="56dp"
+            android:background="@drawable/borda_edittext_transparent"/>
+
+        <EditText
+            android:id="@+id/login_edittext_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_edittext_email"
+            android:hint="@string/password"
+            android:textColorHint="@color/textColorPrimary"
+            android:textColor="@color/textColorPrimary"
+            android:maxLines="1"
+            android:inputType="textPassword"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="56dp"
+            android:layout_marginRight="56dp"
+            android:background="@drawable/borda_edittext_transparent"/>
+
+        <RelativeLayout
+            android:id="@+id/login_layout_progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/login_edittext_senha">
+
+            <ProgressBar
+                android:id="@+id/login_progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4">
+
+        <Button
+            android:id="@+id/login_button_entrar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorButtonRed"
+            android:text="@string/Login"
+            android:textColor="@color/textColorSecundary"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4">
+
+        <Button
+            android:id="@+id/login_button_cadastrar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorButtonBlue"
+            android:text="@string/register"
+            android:textColor="@color/textColorSecundary"
+            android:textSize="20dp" />
+    </RelativeLayout>
+
+</LinearLayout>
