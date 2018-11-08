@@ -1,5 +1,6 @@
 package com.example.jailson.showupartista.gui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -61,7 +62,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void doLogin(){
 
-        //Toast.makeText(this, "Click Button Login", Toast.LENGTH_SHORT).show();
         this.email = this.editText_email.getText().toString();
         this.senha = this.editText_senha.getText().toString();
 
@@ -70,6 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         if(artista != null){
 
             Toast.makeText(this, "Email e Senha OK!", Toast.LENGTH_SHORT).show();
+
         }else{
 
             Toast.makeText(this, "Email e Senha FAIL!", Toast.LENGTH_SHORT).show();
