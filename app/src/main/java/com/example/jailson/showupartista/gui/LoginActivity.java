@@ -69,8 +69,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if(artista != null){
 
-            Toast.makeText(this, "Email e Senha OK!", Toast.LENGTH_SHORT).show();
-
+            //Toast.makeText(this, "Email e Senha OK!", Toast.LENGTH_SHORT).show();
+            Intent in = new Intent(LoginActivity.this, InicialActivity.class);
+            in.putExtra("paramsArtista", artista);
+            startActivity(in);
         }else{
 
             Toast.makeText(this, "Email e Senha FAIL!", Toast.LENGTH_SHORT).show();
