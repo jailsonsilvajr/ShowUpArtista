@@ -9,8 +9,12 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.jailson.showupartista.R;
+import com.example.jailson.showupartista.entidade.Artista;
+import com.example.jailson.showupartista.service.ArtistaService;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private ArtistaService service;
 
     static RelativeLayout login_layout_progressBar;
     private Button button_entrar;
@@ -24,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        this.service = new ArtistaService();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -34,9 +40,6 @@ public class LoginActivity extends AppCompatActivity {
 
         this.editText_email = (EditText) findViewById(R.id.login_edittext_email);
         this.editText_senha = (EditText) findViewById(R.id.login_edittext_senha);
-
-        this.email = this.editText_email.getText().toString();
-        this.senha = this.editText_senha.getText().toString();
 
         this.button_entrar = (Button) findViewById(R.id.login_button_entrar);
         this.button_entrar.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +61,20 @@ public class LoginActivity extends AppCompatActivity {
 
     public void doLogin(){
 
-        Toast.makeText(this, "Click Button Login", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Click Button Login", Toast.LENGTH_SHORT).show();
+        this.email = this.editText_email.getText().toString();
+        this.senha = this.editText_senha.getText().toString();
+
+        Artista artista = this.service.loginArtista(this.email, this.senha);
+
+        if(artista != null){
+
+            Toast.makeText(this, "Email e Senha OK!", Toast.LENGTH_SHORT).show();
+        }else{
+
+            Toast.makeText(this, "Email e Senha FAIL!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void doRegister(){
