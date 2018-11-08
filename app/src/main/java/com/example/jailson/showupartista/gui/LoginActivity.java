@@ -75,13 +75,14 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(in);
         }else{
 
-            Toast.makeText(this, "Email e Senha FAIL!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Login FAIL!", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     public void doRegister(){
 
-        Toast.makeText(this, "Click Button Register", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Click Button Register", Toast.LENGTH_SHORT).show();
+        Intent in = new Intent(LoginActivity.this, CadastroActivity.class);
+        startActivity(in);
     }
 }
