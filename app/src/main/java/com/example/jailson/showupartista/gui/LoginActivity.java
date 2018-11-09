@@ -1,6 +1,7 @@
 package com.example.jailson.showupartista.gui;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -84,5 +85,35 @@ public class LoginActivity extends AppCompatActivity {
         //Toast.makeText(this, "Click Button Register", Toast.LENGTH_SHORT).show();
         Intent in = new Intent(LoginActivity.this, CadastroActivity.class);
         startActivity(in);
+    }
+
+
+
+
+
+
+
+    private class CheckLogin extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            //Tornando o progressBar visível
+            login_layout_progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            //Chamar o ArtistaService passando email e login:
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+
+            //Escondendo o progressBar
+            login_layout_progressBar.setVisibility(View.GONE);
+        }
     }
 }
