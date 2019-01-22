@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.example.jailson.showupartista.R;
 
-public class CadastroActivity extends AppCompatActivity {
+public class InitialActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro);
+        setContentView(R.layout.activity_inicial);
     }
 }

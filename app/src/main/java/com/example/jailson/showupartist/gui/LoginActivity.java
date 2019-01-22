@@ -11,26 +11,26 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.jailson.showupartista.R;
-import com.example.jailson.showupartista.entidade.Artista;
-import com.example.jailson.showupartista.service.ArtistaService;
+import com.example.jailson.showupartista.entidade.Artist;
+import com.example.jailson.showupartista.service.ArtistService;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private ArtistaService service;
+    private ArtistService service;
 
     static RelativeLayout login_layout_progressBar;
-    private Button button_entrar;
+    private Button button_enter;
     private Button button_register;
     private EditText editText_email;
-    private EditText editText_senha;
+    private EditText editText_password;
 
     private String email;
-    private String senha;
+    private String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        this.service = new ArtistaService();
+        this.service = new ArtistService();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -41,17 +41,17 @@ public class LoginActivity extends AppCompatActivity {
         this.login_layout_progressBar.setVisibility(View.GONE);
 
         this.editText_email = (EditText) findViewById(R.id.login_edittext_email);
-        this.editText_senha = (EditText) findViewById(R.id.login_edittext_senha);
+        this.editText_password = (EditText) findViewById(R.id.login_edittext_senha);
 
-        this.button_entrar = (Button) findViewById(R.id.login_button_entrar);
-        this.button_entrar.setOnClickListener(new View.OnClickListener() {
+        this.button_enter = (Button) findViewById(R.id.login_button_enter);
+        this.button_enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 doLogin();
             }
         });
 
-        this.button_register = (Button) findViewById(R.id.login_button_cadastrar);
+        this.button_register = (Button) findViewById(R.id.login_button_register);
         this.button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,15 +64,14 @@ public class LoginActivity extends AppCompatActivity {
     public void doLogin(){
 
         this.email = this.editText_email.getText().toString();
-        this.senha = this.editText_senha.getText().toString();
+        this.password = this.editText_password.getText().toString();
 
-        Artista artista = this.service.loginArtista(this.email, this.senha);
+        Artist artist = this.service.loginArtist(this.email, this.password);
 
-        if(artista != null){
+        if(artist != null){
 
-            //Toast.makeText(this, "Email e Senha OK!", Toast.LENGTH_SHORT).show();
-            Intent in = new Intent(LoginActivity.this, InicialActivity.class);
-            in.putExtra("paramsArtista", artista);
+            Intent in = new Intent(LoginActivity.this, InitialActivity.class);
+            in.putExtra("paramsArtista", artist);
             startActivity(in);
         }else{
 
@@ -82,16 +81,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void doRegister(){
 
-        //Toast.makeText(this, "Click Button Register", Toast.LENGTH_SHORT).show();
-        Intent in = new Intent(LoginActivity.this, CadastroActivity.class);
+        Intent in = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(in);
     }
-
-
-
-
-
-
 
     private class CheckLogin extends AsyncTask<String, Void, String> {
 
@@ -104,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
 
-            //Chamar o ArtistaService passando email e login:
+            //Chamar o ArtistService passando email e login:
             return null;
         }
 
