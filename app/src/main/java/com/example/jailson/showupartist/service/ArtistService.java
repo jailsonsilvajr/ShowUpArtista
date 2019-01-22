@@ -17,40 +17,56 @@ public class ArtistService {
         this.dataBaseAdapter = new DataBaseAdapter(context);
     }
 
-    public boolean registerArtist(Artist artist){
+    public boolean registerArtist(String email, String password){
 
-        ContentValues values = new ContentValues();
+        Cursor cursor = searchArtist(email);
 
-        values.put("email", artist.getEmail());
-        values.put("password", artist.getPassword());
+        if(!cursor.moveToFirst()){
 
-        SQLiteDatabase db = this.dataBaseAdapter.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("email", email);
+            values.put("password", password);
 
-        boolean isCreate = db.insert("artist", null, values) > 0;
-        db.close();
-        return isCreate;
+            SQLiteDatabase db = dataBaseAdapter.getWritableDatabase();
+            boolean isCreate = db.insert("artist", null, values) > 0;
+            db.close();
+            return isCreate;
+        }else{
+
+            return false;
+        }
     }
 
     public Artist loginArtist(String email, String password){
 
-        SQLiteDatabase db = this.dataBaseAdapter.getReadableDatabase();
-        String sql = "SELECT * " +
-                "FROM artist " +
-                "WHERE email = \'" + email + "\'"+
-                " AND password = " + password;
-
-        Cursor cursor = db.rawQuery(sql, null);
+        Cursor cursor = searchArtist(email);
 
         if(cursor.moveToFirst()){
 
-            Artist artist = new Artist();
-            artist.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
-            artist.setEmail(cursor.getString(cursor.getColumnIndex("email")));
-            artist.setPassword(cursor.getString(cursor.getColumnIndex("password")));
-            return artist;
+            if(cursor.getString(cursor.getColumnIndex("password")).equals(password)){
+
+                Artist artist = new Artist();
+                artist.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
+                artist.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                artist.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+                return artist;
+            }else{
+
+                return null;
+            }
         }else{
 
             return null;
         }
+    }
+
+    public Cursor searchArtist(String email){
+
+        SQLiteDatabase db = this.dataBaseAdapter.getReadableDatabase();
+        String sql = "SELECT * " +
+                "FROM artist " +
+                "WHERE email = \'" + email + "\'";
+
+        return db.rawQuery(sql, null);
     }
 }
