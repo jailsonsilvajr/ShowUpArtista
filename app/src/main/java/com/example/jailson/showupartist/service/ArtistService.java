@@ -2,6 +2,7 @@ package com.example.jailson.showupartist.service;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.jailson.showupartist.data.DataBaseAdapter;
@@ -23,20 +24,29 @@ public class ArtistService {
         values.put("email", artist.getEmail());
         values.put("password", artist.getPassword());
 
-        SQLiteDatabase db = dataBaseAdapter.getWritableDatabase();
+        SQLiteDatabase db = this.dataBaseAdapter.getWritableDatabase();
 
         boolean isCreate = db.insert("artist", null, values) > 0;
+        db.close();
         return isCreate;
     }
 
     public Artist loginArtist(String email, String password){
 
-        Artist artist = new Artist();
-        artist.setEmail(email);
-        artist.setPassword(password);
+        SQLiteDatabase db = this.dataBaseAdapter.getReadableDatabase();
+        String sql = "SELECT * " +
+                "FROM artist " +
+                "WHERE email = \'" + email + "\'"+
+                " AND password = " + password;
 
-        if(registerArtist(artist)){
+        Cursor cursor = db.rawQuery(sql, null);
 
+        if(cursor.moveToFirst()){
+
+            Artist artist = new Artist();
+            artist.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("id"))));
+            artist.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+            artist.setPassword(cursor.getString(cursor.getColumnIndex("password")));
             return artist;
         }else{
 

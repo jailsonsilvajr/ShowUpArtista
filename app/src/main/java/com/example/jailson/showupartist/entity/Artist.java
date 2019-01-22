@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 public class Artist implements Parcelable {
 
+    private int id;
     private String email;
     private String password;
 
@@ -12,6 +13,7 @@ public class Artist implements Parcelable {
 
     private Artist(Parcel in){
 
+        id = in.readInt();
         email = in.readString();
         password = in.readString();
     }
@@ -35,8 +37,20 @@ public class Artist implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeInt(id);
         dest.writeString(email);
         dest.writeString(password);
+    }
+
+    public int getId(){
+
+        return id;
+    }
+
+    public void setId(int id){
+
+        this.id = id;
     }
 
     public String getEmail() {
@@ -44,14 +58,14 @@ public class Artist implements Parcelable {
         return email;
     }
 
+    public void setEmail(String email) {
+
+        this.email = email;
+    }
+
     public String getPassword() {
 
         return password;
-    }
-
-    public void setEmail(String login) {
-
-        this.email = login;
     }
 
     public void setPassword(String password) {
