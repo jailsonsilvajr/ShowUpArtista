@@ -1,4 +1,4 @@
-package com.example.jailson.showupartista;
+package com.example.jailson.showupartist;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

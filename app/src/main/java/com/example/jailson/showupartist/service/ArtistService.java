@@ -1,6 +1,6 @@
-package com.example.jailson.showupartista.service;
+package com.example.jailson.showupartist.service;
 
-import com.example.jailson.showupartista.entidade.Artist;
+import com.example.jailson.showupartist.entity.Artist;
 
 public class ArtistService {
 

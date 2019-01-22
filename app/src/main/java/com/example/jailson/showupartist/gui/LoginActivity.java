@@ -1,4 +1,4 @@
-package com.example.jailson.showupartista.gui;
+package com.example.jailson.showupartist.gui;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -10,9 +10,9 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.example.jailson.showupartista.R;
-import com.example.jailson.showupartista.entidade.Artist;
-import com.example.jailson.showupartista.service.ArtistService;
+import com.example.jailson.showupartist.R;
+import com.example.jailson.showupartist.entity.Artist;
+import com.example.jailson.showupartist.service.ArtistService;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         this.login_layout_progressBar.setVisibility(View.GONE);
 
         this.editText_email = (EditText) findViewById(R.id.login_edittext_email);
-        this.editText_password = (EditText) findViewById(R.id.login_edittext_senha);
+        this.editText_password = (EditText) findViewById(R.id.login_edittext_password);
 
         this.button_enter = (Button) findViewById(R.id.login_button_enter);
         this.button_enter.setOnClickListener(new View.OnClickListener() {

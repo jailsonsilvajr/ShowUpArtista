@@ -1,4 +1,4 @@
-package com.example.jailson.showupartista.entidade;
+package com.example.jailson.showupartist.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package com.example.jailson.showupartista;
+package com.example.jailson.showupartist;
 
 import org.junit.Test;
 

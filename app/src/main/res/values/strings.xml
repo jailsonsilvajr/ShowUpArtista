@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">ShowUpArtista</string>
+    <string name="app_name">ShowUpArtist</string>
 
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
-    <string name="Login">ENTRAR</string>
+    <string name="login">ENTRAR</string>
     <string name="register">CADASTRAR</string>
 
 </resources>
