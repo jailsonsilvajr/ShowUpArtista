@@ -18,7 +18,6 @@ public class DataBaseAdapter extends SQLiteOpenHelper {
 
         String sql = "CREATE TABLE artist " +
                 "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT, " +
                 "email TEXT, " +
                 "password NUMBER)";
 

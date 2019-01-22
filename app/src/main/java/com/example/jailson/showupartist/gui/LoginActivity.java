@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        this.service = new ArtistService();
+        this.service = new ArtistService(getApplicationContext());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
