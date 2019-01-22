@@ -3,7 +3,9 @@
 
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
+    <string name="repeat_password">Repetir Senha</string>
     <string name="login">ENTRAR</string>
     <string name="register">CADASTRAR</string>
+    <string name="submit">ENVIAR</string>
 
 </resources>
