@@ -5,6 +5,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.InitialActivity">
+    tools:context=".gui.InitialActivity"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.3"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/temp_background_event"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/initial_textview_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/initial_textview_name_event"
+                android:text="EM 2H"
+                android:textSize="10pt"
+                android:textColor="@color/textColorPrimary"/>
+
+            <TextView
+                android:id="@+id/initial_textview_name_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="Vozes das Quintas"
+                android:textSize="6pt"
+                android:textColor="@color/textColorPrimary"/>
+
+            <Button
+                android:id="@+id/initial_button_enter_event"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/big_arrow"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.6"
+        android:orientation="horizontal">
+
+        <org.lucasr.twowayview.TwoWayView
+            android:id="@+id/initial_twoWayView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style="@style/AppTheme"
+            android:drawSelectorOnTop="false">
+
+        </org.lucasr.twowayview.TwoWayView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/initial_tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:paddingStart="26dp"
+            app:paddingEnd="26dp"
+            app:tabIndicatorHeight="1dp"
+            app:tabMode="scrollable" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/initial_viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
 </LinearLayout>
