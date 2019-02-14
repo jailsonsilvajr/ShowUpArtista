@@ -75,9 +75,7 @@
             android:id="@+id/initial_tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:paddingStart="26dp"
-            app:paddingEnd="26dp"
-            app:tabIndicatorHeight="1dp"
+            app:tabGravity="fill"
             app:tabMode="scrollable" />
 
         <android.support.v4.view.ViewPager
