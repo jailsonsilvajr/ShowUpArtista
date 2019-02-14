@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.jailson.showupartist.R;
@@ -30,7 +32,7 @@ public class InitialActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(InitialActivity.this, "Event "+i, Toast.LENGTH_LONG).show();
+                Toast.makeText(InitialActivity.this, "Event "+(i+1), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -38,6 +40,8 @@ public class InitialActivity extends AppCompatActivity {
         for(int i = 0; i <= 7; i++){
 
             Event event = new Event();
+            event.setName("Event " + (i+1));
+            event.setDate("0" + (i+1) + "/02/2019");
             events.add(event);
         }
         AdapterTwoWayView adapterTwoWayView = new AdapterTwoWayView(this, events);
@@ -77,6 +81,15 @@ public class InitialActivity extends AppCompatActivity {
 
             View rowView = mInflater.inflate(R.layout.layout_twowayview, viewGroup, false);
 
+            RelativeLayout relativeLayout = (RelativeLayout) rowView.findViewById(R.id.layout_twoWayView_relativeLayout);
+            //relativeLayout.setBackgroundColor(i);
+
+            Event event = (Event) getItem(i);
+
+            TextView textViewTime = (TextView) rowView.findViewById(R.id.layout_twoWayView_textView_time);
+            textViewTime.setText(event.getDate());
+            TextView textViewName = (TextView) rowView.findViewById(R.id.layout_twoWayView_textView_name);
+            textViewName.setText(event.getName());
 
 
             return rowView;
